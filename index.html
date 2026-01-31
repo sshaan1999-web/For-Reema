@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Reema ❤️</title>
+  <meta name="description" content="A tiny romantic question." />
+  <style>
+    :root{
+      --bg1:#ffdde8;
+      --bg2:#ffeef6;
+      --card:#ffffffcc;
+      --text:#2a1020;
+      --muted:#6d3c52;
+      --accent:#ff3b7a;
+      --accent2:#ff7aa8;
+      --shadow: 0 20px 60px rgba(30, 5, 18, .18);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-rounded, system-ui, -apple-system, "SF Pro Display", "SF Pro Text", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 20%, #fff 0%, transparent 55%),
+        radial-gradient(900px 500px at 80% 30%, #fff 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* floating hearts */
+    .hearts{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.9;
+    }
+    .heart{
+      position:absolute;
+      width:14px; height:14px;
+      transform: rotate(45deg);
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 3px;
+      filter: drop-shadow(0 6px 10px rgba(255,59,122,.25));
+      animation: floatUp linear infinite;
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width:14px; height:14px;
+      background: inherit;
+      border-radius:50%;
+    }
+    .heart:before{left:-7px; top:0}
+    .heart:after{top:-7px; left:0}
+
+    @keyframes floatUp{
+      from{ transform: translateY(20vh) rotate(45deg); opacity:0}
+      10%{opacity:1}
+      to{ transform: translateY(-120vh) rotate(45deg); opacity:0}
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 24px 16px 52px;
+    }
+
+    .card{
+      width:min(720px, 100%);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 26px 20px 20px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .glow{
+      position:absolute; inset:-60px;
+      background:
+        radial-gradient(220px 180px at 20% 20%, rgba(255,59,122,.25), transparent 60%),
+        radial-gradient(240px 200px at 80% 30%, rgba(255,122,168,.22), transparent 60%),
+        radial-gradient(280px 220px at 40% 90%, rgba(255,59,122,.12), transparent 60%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .content{position:relative; z-index:1}
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(255,255,255,.6);
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(255,59,122,.12);
+    }
+
+    h1{
+      margin: 18px 0 10px;
+      font-size: clamp(30px, 5.2vw, 48px);
+      line-height:1.05;
+      letter-spacing:-.7px;
+    }
+    p{
+      margin: 0 0 16px;
+      color:var(--muted);
+      font-size: clamp(16px, 2.8vw, 18px);
+      line-height:1.55;
+    }
+
+    .names{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin: 10px 0 18px;
+      font-weight:700;
+    }
+    .pill{
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.65);
+    }
+
+    .question{
+      margin-top: 10px;
+      padding: 18px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.65);
+    }
+    .question h2{
+      margin:0 0 12px;
+      font-size: clamp(22px, 4vw, 28px);
+      letter-spacing:-.4px;
+    }
+
+    .btnRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+      align-items:center;
+    }
+
+    button, a.btn{
+      -webkit-tap-highlight-color: transparent;
+      border:0;
+      cursor:pointer;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 16px;
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+      user-select:none;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .yes{
+      background: linear-gradient(180deg, var(--accent), #ff2f70);
+      color:white;
+      box-shadow: 0 12px 28px rgba(255,59,122,.32);
+      min-width: 170px;
+    }
+    .yes:active{transform: translateY(1px) scale(.99)}
+    .no{
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(110,60,82,.18);
+      color: var(--text);
+      min-width: 140px;
+      position:relative;
+    }
+    .no:active{transform: translateY(1px) scale(.99)}
+    .hint{
+      font-size: 13px;
+      color: rgba(109,60,82,.85);
+      margin-top: 10px;
+    }
+
+    .result{
+      margin-top: 16px;
+      display:none;
+      padding: 14px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(255,255,255,.65);
+    }
+    .result.show{display:block}
+    .result strong{color:#a10f41}
+
+    .footer{
+      margin-top: 16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(109,60,82,.8);
+      font-size: 12px;
+    }
+
+    /* confetti */
+    .confetti{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index: 10;
+      overflow:hidden;
+      display:none;
+    }
+    .confetti.show{display:block}
+    .confetti i{
+      position:absolute;
+      width:10px; height:14px;
+      border-radius: 3px;
+      opacity:.95;
+      transform: translateY(-10vh) rotate(0deg);
+      animation: fall 1.4s ease-in forwards;
+    }
+    @keyframes fall{
+      to{
+        transform: translateY(110vh) rotate(540deg);
+        opacity:1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .heart{animation:none}
+      .confetti i{animation:none}
+      button, a.btn{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+  <div class="confetti" aria-hidden="true" id="confetti"></div>
+
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Valentine card">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="content">
+        <div class="badge"><span class="dot"></span> A little message just for you</div>
+
+        <h1>Hey Reema ❤️</h1>
+        <p>
+          I’ve been wanting to ask you something in a way that feels like <em>us</em> —
+          sweet, simple, and a little dramatic.
+        </p>
+
+        <div class="names" aria-label="Names">
+          <div class="pill">From: <span id="fromName">Shaan Santhosh</span></div>
+          <div class="pill">To: <span id="toName">Reema Roy</span></div>
+        </div>
+
+        <div class="question">
+          <h2>Will you be my Valentine?</h2>
+          <div class="btnRow">
+            <button class="yes" id="yesBtn" type="button">Yes 💖</button>
+            <button class="no" id="noBtn" type="button">No 🙈</button>
+            <a class="btn yes" id="textBtn" href="#" style="display:none;">Text “YES” 💬</a>
+          </div>
+          <div class="hint" id="hint">
+            (If you hit “No”, it might… mysteriously move. 😇)
+          </div>
+
+          <div class="result" id="result">
+            <div style="font-size:18px; line-height:1.4;">
+              <strong>YAY!</strong> I can’t wait. 💞<br/>
+              <span id="resultLine">You just made my whole day.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span id="dateLine"></span>
+          <span>Made with ❤️ by Shaan</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // --- Personalization via URL params: ?to=Reema%20Roy&from=Shaan%20Santhosh
+    const params = new URLSearchParams(location.search);
+    const to = params.get("to") || "Reema Roy";
+    const from = params.get("from") || "Shaan Santhosh";
+    document.getElementById("toName").textContent = to;
+    document.getElementById("fromName").textContent = from;
+    document.querySelector("h1").textContent = `Hey ${to.split(" ")[0]} ❤️`;
+
+    // Date line (local)
+    const d = new Date();
+    document.getElementById("dateLine").textContent =
+      d.toLocaleDateString(undefined, { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+    // --- Floating hearts background
+    const hearts = document.getElementById("hearts");
+    const heartCount = 18;
+    for (let i=0;i<heartCount;i++){
+      const h = document.createElement("div");
+      h.className = "heart";
+      const left = Math.random()*100;
+      const delay = Math.random()*6;
+      const dur = 7 + Math.random()*8;
+      const size = 10 + Math.random()*12;
+      h.style.left = left + "vw";
+      h.style.animationDelay = delay + "s";
+      h.style.animationDuration = dur + "s";
+      h.style.width = size + "px";
+      h.style.height = size + "px";
+      hearts.appendChild(h);
+    }
+
+    // --- Confetti burst
+    const confetti = document.getElementById("confetti");
+    function burst(){
+      confetti.innerHTML = "";
+      confetti.classList.add("show");
+      const pieces = 70;
+      for (let i=0;i<pieces;i++){
+        const p = document.createElement("i");
+        const x = Math.random()*100;
+        const delay = Math.random()*0.15;
+        const drift = (Math.random()*40 - 20);
+        const sizeW = 6 + Math.random()*8;
+        const sizeH = 10 + Math.random()*10;
+        const hue = 330 + Math.random()*30; // pink-ish
+        p.style.left = x + "vw";
+        p.style.top = "-6vh";
+        p.style.width = sizeW + "px";
+        p.style.height = sizeH + "px";
+        p.style.background = `hsl(${hue} 95% 65%)`;
+        p.style.animationDelay = delay + "s";
+        p.style.transform = `translateX(${drift}vw) rotate(${Math.random()*180}deg)`;
+        confetti.appendChild(p);
+      }
+      setTimeout(()=>confetti.classList.remove("show"), 1600);
+    }
+
+    // --- Buttons behavior
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn  = document.getElementById("noBtn");
+    const result = document.getElementById("result");
+    const hint   = document.getElementById("hint");
+    const textBtn= document.getElementById("textBtn");
+
+    function showYes(){
+      result.classList.add("show");
+      hint.textContent = "Now I owe you something cute and sweet. 💐";
+      burst();
+
+      // iPhone-friendly: open Messages with a prefilled text
+      const msg = encodeURIComponent(`YES! 💖 I’ll be your Valentine, ${from.split(" ")[0]} 😊`);
+      textBtn.href = `sms:&body=${msg}`;
+      textBtn.style.display = "inline-flex";
+    }
+
+    yesBtn.addEventListener("click", showYes);
+
+    // Make "No" playfully dodge taps
+    let dodges = 0;
+    function dodge(){
+      dodges++;
+      const maxX = 120, maxY = 40;
+      const x = (Math.random()*maxX - maxX/2);
+      const y = (Math.random()*maxY - maxY/2);
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      if (dodges >= 5){
+        hint.textContent = "Ok ok… I’ll accept a ‘maybe’. 😅 Try ‘Yes’ though.";
+      }
+    }
+    noBtn.addEventListener("mouseenter", dodge);
+    noBtn.addEventListener("touchstart", (e)=>{ e.preventDefault(); dodge(); }, {passive:false});
+    noBtn.addEventListener("click", dodge);
+  </script>
+</body>
+</html>
